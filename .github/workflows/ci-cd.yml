@@ -26,14 +26,10 @@ jobs:
       # 3️⃣ Build Maven
       - name: Build Maven project
         run: mvn clean package -DskipTests
-      - name: Debug DOCKER_USERNAME existence
+      - name: Debug variables (temporaire)
         run: |
-          if [ -z "${{ secrets.SSH_USER }}" ]; then
-          echo "DOCKER_PASSWORD is EMPTY"
-          exit 1
-          else
-          echo "DOCKER_PASSWORD is SET (masked)"
-          fi
+          echo "DOCKER_USERNAME length: ${#DOCKER_USERNAME}"
+          echo "Username starts with: ${DOCKER_USERNAME:0:1}"
 
 
       # 4️⃣ Build Docker image avec tag correct
