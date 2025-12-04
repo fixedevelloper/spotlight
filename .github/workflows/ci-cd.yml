@@ -26,8 +26,15 @@ jobs:
       # 3️⃣ Build Maven
       - name: Build Maven project
         run: mvn clean package -DskipTests
-      - name: Test secrets
-        run: echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}"
+      - name: Debug DOCKER_USERNAME existence
+        run: |
+          if [ -z "${{ secrets.DOCKER_USERNAME }}" ]; then
+          echo "DOCKER_USERNAME is EMPTY"
+          exit 1
+          else
+          echo "DOCKER_USERNAME is SET (masked)"
+          fi
+
 
       # 4️⃣ Build Docker image avec tag correct
       - name: Build Docker image
