@@ -26,6 +26,8 @@ jobs:
       # 3️⃣ Build Maven
       - name: Build Maven project
         run: mvn clean package -DskipTests
+      - name: Test secrets
+        run: echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}"
 
       # 4️⃣ Build Docker image avec tag correct
       - name: Build Docker image
