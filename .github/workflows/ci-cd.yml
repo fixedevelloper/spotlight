@@ -28,7 +28,7 @@ jobs:
         run: mvn clean package -DskipTests
       - name: Debug DOCKER_USERNAME existence
         run: |
-          if [ -z "${{ secrets.DOCKER_PASSWORD }}" ]; then
+          if [ -z "${{ secrets.SSH_USER }}" ]; then
           echo "DOCKER_PASSWORD is EMPTY"
           exit 1
           else
