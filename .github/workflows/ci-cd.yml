@@ -28,11 +28,11 @@ jobs:
         run: mvn clean package -DskipTests
       - name: Debug DOCKER_USERNAME existence
         run: |
-          if [ -z "${{ secrets.DOCKER_USERNAME }}" ]; then
-          echo "DOCKER_USERNAME is EMPTY"
+          if [ -z "${{ secrets.DOCKER_PASSWORD }}" ]; then
+          echo "DOCKER_PASSWORD is EMPTY"
           exit 1
           else
-          echo "DOCKER_USERNAME is SET (masked)"
+          echo "DOCKER_PASSWORD is SET (masked)"
           fi
 
 
